@@ -1,6 +1,6 @@
 <footer>
 
-<p>Copyright © Alef IronDesign</p>
+<p>Copyright © IronDesign</p>
 
 </footer>
 
