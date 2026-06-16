@@ -2495,3 +2495,152 @@ label{
     }
 
 }
+
+/* ==========================================================
+   Coming Soon Page
+   ========================================================== */
+
+.coming-soon-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 80px 20px 40px;
+}
+
+/* Background Image */
+.coming-soon-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6) saturate(1.1);
+}
+
+/* Glass Overlay */
+.coming-soon-glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Content */
+.coming-soon-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    max-width: 800px;
+    padding: 40px 20px;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Badge */
+.coming-soon-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Title */
+.coming-soon-title {
+    font-size: clamp(52px, 10vw, 100px);
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ffffff 0%, #8b8b8b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+/* Description */
+.coming-soon-desc {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto 10px;
+}
+
+/* Divider */
+.coming-soon-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    margin: 25px auto;
+    border-radius: 10px;
+}
+
+/* Sub Text */
+.coming-soon-sub {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .coming-soon-title {
+        font-size: 42px;
+    }
+    .coming-soon-desc {
+        font-size: 18px;
+    }
+    .coming-soon-glass {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+    .coming-soon-badge {
+        font-size: 12px;
+        padding: 6px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coming-soon-title {
+        font-size: 32px;
+    }
+    .coming-soon-desc {
+        font-size: 16px;
+    }
+    .coming-soon-sub {
+        font-size: 13px;
+        letter-spacing: 4px;
+    }
+}
