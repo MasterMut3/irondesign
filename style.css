@@ -1,0 +1,553 @@
+/*
+Theme Name: IronDesign
+Theme URI: https://irondesign.ir
+Author: Soheil Daftari
+Author URI: https://irondesign.ir
+Description: Premium Dark Glassmorphism WooCommerce Theme for IronDesign
+Version: 1.0.0
+Requires at least: 6.8
+Tested up to: 6.8
+Requires PHP: 8.2
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: irondesign
+Domain Path: /languages
+Tags: ecommerce, woocommerce, rtl-language-support, dark, glassmorphism, custom-logo, featured-images, responsive, blog
+*/
+
+/* ==========================================================
+   IronDesign Theme
+   Version: 1.0.0
+   ========================================================== */
+
+/* ---------- CSS Reset ---------- */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    min-height:100vh;
+    font-family:
+        Inter,
+        Vazirmatn,
+        IRANSansX,
+        sans-serif;
+    background:#0c0c0f;
+    color:#ffffff;
+    line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+
+img{
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+
+picture{
+    display:block;
+}
+
+svg{
+    display:block;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+    outline:none;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    background:none;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+ul,
+ol{
+    list-style:none;
+}
+
+/* ---------- Variables ---------- */
+
+:root{
+
+    --primary:#ffffff;
+    --secondary:#b7b7b7;
+
+    --background:#090909;
+    --background-light:#151515;
+    --background-card:#1b1b1b;
+
+    --accent:#6EE7F9;
+
+    --danger:#ff3b5b;
+    --success:#22c55e;
+    --warning:#fbbf24;
+
+    --glass-bg:rgba(255,255,255,.08);
+
+    --glass-border:rgba(255,255,255,.12);
+
+    --glass-shadow:
+        0 10px 40px rgba(0,0,0,.35);
+
+    --radius-sm:12px;
+    --radius:20px;
+    --radius-lg:30px;
+
+    --transition:.35s ease;
+
+    --container:1450px;
+
+}
+
+/* ---------- Selection ---------- */
+
+::selection{
+    background:var(--accent);
+    color:#000;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0b0b;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+        180deg,
+        #4d4d4d,
+        #7a7a7a
+    );
+
+    border-radius:100px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#9a9a9a;
+
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    font-weight:700;
+    line-height:1.2;
+
+}
+
+h1{
+
+    font-size:clamp(42px,7vw,80px);
+
+}
+
+h2{
+
+    font-size:clamp(32px,5vw,56px);
+
+}
+
+h3{
+
+    font-size:30px;
+
+}
+
+h4{
+
+    font-size:24px;
+
+}
+
+p{
+
+    color:var(--secondary);
+
+}
+
+/* ---------- Layout ---------- */
+
+.container{
+
+    width:min(
+        var(--container),
+        calc(100% - 48px)
+    );
+
+    margin-inline:auto;
+
+}
+
+.section{
+
+    padding:110px 0;
+
+}
+
+.grid{
+
+    display:grid;
+
+}
+
+.flex{
+
+    display:flex;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+/* ---------- Background ---------- */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-2;
+
+    background:
+
+        radial-gradient(
+            circle at top right,
+            rgba(79,172,254,.12),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at bottom left,
+            rgba(118,75,162,.16),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            180deg,
+            #090909,
+            #111111,
+            #080808
+        );
+
+}
+
+/* ---------- Glass ---------- */
+
+.glass{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(28px)
+                     saturate(180%);
+
+    -webkit-backdrop-filter:blur(28px)
+                            saturate(180%);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    box-shadow:var(--glass-shadow);
+
+}
+
+.glass-dark{
+
+    background:rgba(18,18,20,.72);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+}
+
+.glass-card{
+
+    background:rgba(30,30,30,.45);
+
+    backdrop-filter:blur(40px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.35);
+
+}
+
+/* ---------- Buttons ---------- */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px 28px;
+
+    border-radius:999px;
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:#fff;
+
+    color:#000;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-glass{
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.btn-glass:hover{
+
+    background:rgba(255,255,255,.14);
+
+}
+
+/* ---------- Cards ---------- */
+
+.card{
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    transition:.45s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* ---------- Forms ---------- */
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#181818;
+
+    color:#fff;
+
+    padding:16px;
+
+}
+
+input:focus,
+textarea:focus{
+
+    outline:2px solid var(--accent);
+
+}
+
+/* ---------- Utilities ---------- */
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mt-1{margin-top:8px;}
+.mt-2{margin-top:16px;}
+.mt-3{margin-top:24px;}
+.mt-4{margin-top:32px;}
+.mt-5{margin-top:48px;}
+
+.mb-1{margin-bottom:8px;}
+.mb-2{margin-bottom:16px;}
+.mb-3{margin-bottom:24px;}
+.mb-4{margin-bottom:32px;}
+.mb-5{margin-bottom:48px;}
+
+/* ---------- Animations ---------- */
+
+@keyframes shimmer{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:1200px){
+
+    .section{
+
+        padding:90px 0;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .container{
+
+        width:min(100% - 36px,100%);
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    h1{
+
+        font-size:48px;
+
+    }
+
+    h2{
+
+        font-size:36px;
+
+    }
+
+    .section{
+
+        padding:70px 0;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .container{
+
+        width:calc(100% - 24px);
+
+    }
+
+    .btn{
+
+        width:100%;
+
+    }
+
+}
