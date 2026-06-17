@@ -66,24 +66,17 @@ function irondesign_enqueue_assets()
      * Pass PHP variables to JS
      */
 
-    wp_localize_script(
-        'irondesign-theme',
-        'IronDesign',
-
-        array(
-
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-
-            'homeUrl' => home_url('/'),
-
-            'themeUrl' => IRONDESIGN_URI,
-
-            'isLoggedIn' => is_user_logged_in(),
-
-            'nonce' => wp_create_nonce('irondesign_nonce'),
-
-        )
-    );
+wp_localize_script(
+    'irondesign-theme',
+    'IronDesignData',
+    array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'homeUrl' => home_url('/'),
+        'themeUrl' => IRONDESIGN_URI,
+        'isLoggedIn' => is_user_logged_in(),
+        'nonce' => wp_create_nonce('irondesign_nonce'),
+    )
+);
 
     /**
      * Threaded Comments

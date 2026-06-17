@@ -2644,3 +2644,222 @@ label{
         letter-spacing: 4px;
     }
 }
+.wholesale-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1.2fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+    padding:70px;
+
+}
+
+.wholesale-benefits{
+
+    display:grid;
+
+    gap:18px;
+
+    margin:35px 0;
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.wholesale-benefits li{
+
+    font-size:18px;
+
+}
+
+.wholesale-image img{
+
+    width:100%;
+
+    border-radius:30px;
+
+    object-fit:cover;
+
+}
+
+@media(max-width:992px){
+
+    .wholesale-wrapper{
+
+        grid-template-columns:1fr;
+
+        padding:40px;
+
+    }
+
+}
+/*==================================================
+= Features
+==================================================*/
+
+.features-section{
+
+    position:relative;
+
+}
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.feature-card{
+
+    padding:40px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.feature-icon{
+
+    width:72px;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    font-size:32px;
+
+}
+
+.feature-title{
+
+    margin-bottom:16px;
+
+}
+
+.feature-description{
+
+    color:var(--color-text);
+
+    line-height:1.7;
+
+}
+
+@media(max-width:992px){
+
+    .features-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .features-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/*==================================================
+= Newsletter
+==================================================*/
+
+.newsletter-section{
+
+    position:relative;
+
+}
+
+.newsletter-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:70px;
+
+}
+
+.irondesign-newsletter-form{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+.irondesign-newsletter-form input{
+
+    flex:1;
+
+    min-height:60px;
+
+}
+
+.irondesign-newsletter-form button{
+
+    white-space:nowrap;
+
+}
+
+@media(max-width:992px){
+
+    .newsletter-wrapper{
+
+        grid-template-columns:1fr;
+
+        padding:45px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .irondesign-newsletter-form{
+
+        flex-direction:column;
+
+    }
+
+    .irondesign-newsletter-form button{
+
+        width:100%;
+
+    }
+
+}
