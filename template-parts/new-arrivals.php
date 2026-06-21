@@ -75,34 +75,12 @@ if ( empty( $product_ids ) ) {
 
 		<?php
 
-		wc_set_loop_prop( 'columns', 4 );
-
-		woocommerce_product_loop_start();
-
-		foreach ( $product_ids as $product_id ) {
-
-			$post = get_post( $product_id );
-
-			if ( ! $post ) {
-				continue;
-			}
-
-			$GLOBALS['post'] = $post;
-
-			setup_postdata( $post );
-
-			wc_get_template_part(
-				'content',
-				'product'
+			irondesign_render_product_loop(
+				$product_ids,
+				4
 			);
 
-		}
-
-		wp_reset_postdata();
-
-		woocommerce_product_loop_end();
-
-		?>
+?>
 
 	</div>
 

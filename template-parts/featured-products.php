@@ -91,28 +91,9 @@ if ( empty( $products ) ) {
 		</div>
 
 		<?php
-
-		wc_set_loop_prop( 'columns', 4 );
-
-		woocommerce_product_loop_start();
-
-		foreach ( $products as $product ) {
-
-			$post_object = get_post( $product->get_id() );
-
-			setup_postdata( $GLOBALS['post'] = $post_object );
-
-			wc_get_template_part(
-				'content',
-				'product'
-			);
-
-		}
-
-		wp_reset_postdata();
-
-		woocommerce_product_loop_end();
-
+			irondesign_render_product_loop(
+			$product_ids,
+			4);
 		?>
 
 	</div>
