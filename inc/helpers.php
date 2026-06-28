@@ -1,6 +1,7 @@
 <?php
 
- /* Render Product Loop
+/**
+ * Render Product Loop
  *
  * @param array $product_ids Product IDs.
  * @param int   $columns     Number of columns.
@@ -11,8 +12,10 @@ function irondesign_render_product_loop( $product_ids, $columns = 4 ) {
 		return;
 	}
 
+	// Set WooCommerce loop properties
 	wc_set_loop_prop( 'columns', absint( $columns ) );
-
+	
+	// Start the product loop
 	woocommerce_product_loop_start();
 
 	foreach ( $product_ids as $product_id ) {
@@ -27,10 +30,8 @@ function irondesign_render_product_loop( $product_ids, $columns = 4 ) {
 
 		setup_postdata( $post );
 
-		wc_get_template_part(
-			'content',
-			'product'
-		);
+		// Load product template
+		wc_get_template_part( 'content', 'product' );
 
 	}
 

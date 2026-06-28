@@ -39,6 +39,21 @@ function irondesign_enqueue_assets()
     );
 
     /**
+     * WooCommerce Styles (ADD THIS!)
+     */
+
+    // Check if WooCommerce is active
+    if ( class_exists( 'WooCommerce' ) ) {
+        wp_enqueue_style(
+            'irondesign-woocommerce',
+            IRONDESIGN_URI . '/assets/css/woocommerce.css',
+            array('irondesign-theme'),
+            IRONDESIGN_VERSION . '.' . time(), // Force reload during development
+            'all'
+        );
+    }
+
+    /**
      * Google Fonts
      * (Replace later with local fonts if desired)
      */
@@ -66,17 +81,17 @@ function irondesign_enqueue_assets()
      * Pass PHP variables to JS
      */
 
-wp_localize_script(
-    'irondesign-theme',
-    'IronDesignData',
-    array(
-        'ajaxUrl' => admin_url('admin-ajax.php'),
-        'homeUrl' => home_url('/'),
-        'themeUrl' => IRONDESIGN_URI,
-        'isLoggedIn' => is_user_logged_in(),
-        'nonce' => wp_create_nonce('irondesign_nonce'),
-    )
-);
+    wp_localize_script(
+        'irondesign-theme',
+        'IronDesignData',
+        array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'homeUrl' => home_url('/'),
+            'themeUrl' => IRONDESIGN_URI,
+            'isLoggedIn' => is_user_logged_in(),
+            'nonce' => wp_create_nonce('irondesign_nonce'),
+        )
+    );
 
     /**
      * Threaded Comments
