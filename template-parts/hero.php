@@ -52,21 +52,18 @@ $new_url = class_exists( 'WooCommerce' )
 
             <span class="hero-subtitle glass">
 
-                Premium Fashion Experience
+                اعتمادی از جنس آهن
 
             </span>
 
             <h1 class="hero-title">
 
-                Elevate Your Style
-
+                هنر آهن
                 <br>
-
-                With
-
+                در
                 <span class="gradient-text">
 
-                    IronDesign
+                    طراحی چوب
 
                 </span>
 
@@ -74,31 +71,31 @@ $new_url = class_exists( 'WooCommerce' )
 
             <p class="hero-description">
 
-                Modern clothing, premium quality and a shopping experience
-                designed for people who appreciate minimal design and
-                exceptional craftsmanship.
+                ترکیبی از استحکام آهن و گرمای چوب در محصولاتی منحصربه‌فرد. 
+                از مبلمان صنعتی تا اکسسوری‌های دکوراتیو، هر قطعه با عشق و 
+                دقت، توسط هنرمندان IronDesign خلق شده است.
 
             </p>
 
             <div class="hero-actions">
 
-                <a
-                    href="<?php echo esc_url( $shop_url ); ?>"
-                    class="btn btn-primary">
+    <a
+        href="<?php echo esc_url( $shop_url ); ?>"
+        class="btn btn-primary">
 
-                    Shop Now
+        مشاهده محصولات
 
-                </a>
+    </a>
 
-                <a
-                    href="<?php echo esc_url( $new_url ); ?>"
-                    class="btn btn-glass">
+    <a
+        href="<?php echo esc_url( home_url( '/custom-order/' ) ); ?>"
+        class="btn btn-glass">
 
-                    New Arrivals
+        ثبت سفارش
 
-                </a>
+    </a>
 
-            </div>
+</div>
 
             <div class="hero-stats mt-5">
 
@@ -112,7 +109,7 @@ $new_url = class_exists( 'WooCommerce' )
 
                     <p>
 
-                        Premium Products
+                        محصولات منحصربه‌فرد
 
                     </p>
 
@@ -128,7 +125,7 @@ $new_url = class_exists( 'WooCommerce' )
 
                     <p>
 
-                        Happy Customers
+                        مشتریان راضی
 
                     </p>
 
@@ -144,7 +141,7 @@ $new_url = class_exists( 'WooCommerce' )
 
                     <p>
 
-                        Brand Partners
+                        همکاران حرفه‌ای
 
                     </p>
 
@@ -162,13 +159,13 @@ $new_url = class_exists( 'WooCommerce' )
 
                     <img
                         src="<?php echo esc_url( IRONDESIGN_URI . '/assets/images/hero-small-1.jpg' ); ?>"
-                        alt="Fashion">
+                        alt="مبل آهنی و چوبی صنعتی">
 
                     <div class="video-caption">
 
                         <h3>
 
-                            Summer Collection
+                            مجموعه صنعتی
 
                         </h3>
 
@@ -180,13 +177,13 @@ $new_url = class_exists( 'WooCommerce' )
 
                     <img
                         src="<?php echo esc_url( IRONDESIGN_URI . '/assets/images/hero-small-2.jpg' ); ?>"
-                        alt="Streetwear">
+                        alt="اکسسوری چوبی و آهنی دکوراتیو">
 
                     <div class="video-caption">
 
                         <h3>
 
-                            Street Wear
+                            دکوراسیون داخلی
 
                         </h3>
 
@@ -200,19 +197,19 @@ $new_url = class_exists( 'WooCommerce' )
 
                 <img
                     src="<?php echo esc_url( IRONDESIGN_URI . '/assets/images/hero-large.jpg' ); ?>"
-                    alt="IronDesign">
+                    alt="IronDesign | ترکیب آهن و چوب در هنر صنایع دستی">
 
                 <div class="video-caption">
 
                     <h2>
 
-                        New Collection
+                        کلکسیون بهاری
 
                     </h2>
 
                     <p>
 
-                        Discover premium fashion.
+                        تلفیق استحکام و زیبایی
 
                     </p>
 

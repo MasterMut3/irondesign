@@ -6,97 +6,135 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$features = array(
-
-	array(
-		'icon'        => '🚚',
-		'title'       => __( 'Free Shipping', 'irondesign' ),
-		'description' => __( 'Free shipping on eligible orders with fast and reliable delivery.', 'irondesign' ),
-	),
-
-	array(
-		'icon'        => '🔒',
-		'title'       => __( 'Secure Payments', 'irondesign' ),
-		'description' => __( 'Protected checkout powered by trusted payment gateways.', 'irondesign' ),
-	),
-
-	array(
-		'icon'        => '⭐',
-		'title'       => __( 'Premium Quality', 'irondesign' ),
-		'description' => __( 'Every product is selected for quality, comfort and durability.', 'irondesign' ),
-	),
-
-	array(
-		'icon'        => '💬',
-		'title'       => __( '24/7 Support', 'irondesign' ),
-		'description' => __( 'Our team is ready to help you whenever you need assistance.', 'irondesign' ),
-	),
-
-);
-
 ?>
 
 <section class="features-section">
 
-	<div class="container">
+    <div class="container">
 
-		<div class="section-header fade-up">
+        <div class="section-header fade-up">
 
-			<div>
+            <div>
 
-				<span class="hero-subtitle glass">
+                <span class="hero-subtitle glass">
 
-					Why IronDesign
+                    چرا IronDesign؟
 
-				</span>
+                </span>
 
-				<h2 class="section-title">
+                <h2 class="section-title">
 
-					A Better Shopping Experience
+                    تجربه‌ای بهتر از خرید
 
-				</h2>
+                </h2>
 
-				<p class="section-subtitle">
+                <p class="section-subtitle">
 
-					Everything we do is focused on delivering premium products and outstanding customer service.
+                    ما به کیفیت، اصالت و رضایت شما متعهدیم.
+                    هر آنچه انجام می‌دهیم، برای ارائه بهترین تجربه ممکن است.
 
-				</p>
+                </p>
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-		<div class="features-grid">
+        <div class="features-grid">
 
-			<?php foreach ( $features as $feature ) : ?>
+            <article class="feature-card glass-card fade-up">
 
-				<article class="feature-card glass-card fade-up">
+                <div class="feature-icon">
 
-					<div class="feature-icon">
+                    🚚
 
-						<?php echo esc_html( $feature['icon'] ); ?>
+                </div>
 
-					</div>
+                <h3 class="feature-title">
 
-					<h3 class="feature-title">
+                    ارسال رایگان
 
-						<?php echo esc_html( $feature['title'] ); ?>
+                </h3>
 
-					</h3>
+                <p class="feature-description">
 
-					<p class="feature-description">
+                    ارسال رایگان برای سفارش‌های بالای مبلغ معین،
+                    با بسته‌بندی ایمن و تحویل سریع.
 
-						<?php echo esc_html( $feature['description'] ); ?>
+                </p>
 
-					</p>
+            </article>
 
-				</article>
+            <article class="feature-card glass-card fade-up">
 
-			<?php endforeach; ?>
+                <div class="feature-icon">
 
-		</div>
+                    🔒
 
-	</div>
+                </div>
+
+                <h3 class="feature-title">
+
+                    پرداخت امن
+
+                </h3>
+
+                <p class="feature-description">
+
+                    فرآیند پرداخت کاملاً امن با استفاده از درگاه‌های
+                    معتبر و رمزنگاری پیشرفته.
+
+                </p>
+
+            </article>
+
+            <article class="feature-card glass-card fade-up">
+
+                <div class="feature-icon">
+
+                    ⭐
+
+                </div>
+
+                <h3 class="feature-title">
+
+                    کیفیت برتر
+
+                </h3>
+
+                <p class="feature-description">
+
+                    هر محصول با دقت و عشق توسط هنرمندان IronDesign
+                    ساخته و برای ماندگاری طولانی طراحی شده است.
+
+                </p>
+
+            </article>
+
+            <article class="feature-card glass-card fade-up">
+
+                <div class="feature-icon">
+
+                    💬
+
+                </div>
+
+                <h3 class="feature-title">
+
+                    پشتیبانی ۲۴/۷
+
+                </h3>
+
+                <p class="feature-description">
+
+                    تیم ما همواره آماده پاسخگویی به سوالات و
+                    راهنمایی شما در تمام مراحل خرید است.
+
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
 
 </section>

@@ -49,27 +49,24 @@
 
             <!-- Logo -->
 
-            <div class="site-logo">
+<div class="site-logo">
 
-                <?php
-                if ( has_custom_logo() ) {
+    <?php if ( has_custom_logo() ) : ?>
 
-                    the_custom_logo();
+        <?php the_custom_logo(); ?>
 
-                } else {
-                    ?>
+    <?php else : ?>
 
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 
-                        <h1><?php bloginfo( 'name' ); ?></h1>
+            <!-- Text Logo (Fallback) -->
+            <h1><?php bloginfo( 'name' ); ?></h1>
 
-                    </a>
+        </a>
 
-                    <?php
-                }
-                ?>
+    <?php endif; ?>
 
-            </div>
+</div>
 
             <!-- Navigation -->
 

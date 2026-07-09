@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Product Price
+ * Product Price
  *
  * @package IronDesign
  */
@@ -8,47 +8,23 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
-
-if ( ! $product ) {
-	return;
-}
-
 ?>
 
 <div class="irondesign-product-price">
 
-	<?php echo wp_kses_post( $product->get_price_html() ); ?>
+    <div class="price">
+        <?php echo wp_kses_post( $product->get_price_html() ); ?>
+    </div>
 
-	<?php if ( $product->is_on_sale() ) : ?>
-
-		<div class="product-discount">
-
-			<?php
-
-			if ( $product->is_type( 'simple' ) ) {
-
-				$regular = (float) $product->get_regular_price();
-				$sale    = (float) $product->get_sale_price();
-
-				if ( $regular > 0 && $sale > 0 ) {
-
-					$discount = round(
-						( ( $regular - $sale ) / $regular ) * 100
-					);
-
-					printf(
-						'<span class="discount-badge">-%d%%</span>',
-						$discount
-					);
-
-				}
-
-			}
-
-			?>
-
-		</div>
-
-	<?php endif; ?>
+    <?php if ( $product->is_on_sale() ) : ?>
+        <span class="discount-badge">
+            <?php
+            $regular_price = $product->get_regular_price();
+            $sale_price = $product->get_sale_price();
+            $percentage = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+            echo esc_html( $percentage . '% ' . __( 'تخفیف', 'irondesign' ) );
+            ?>
+        </span>
+    <?php endif; ?>
 
 </div>

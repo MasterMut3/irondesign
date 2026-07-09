@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Product Page
+ * Login Page
  *
  * @package IronDesign
  */
@@ -14,14 +14,11 @@ get_header();
 
     <div class="container">
 
-        <?php
-        while ( have_posts() ) :
-            the_post();
+        <div class="login-wrapper">
 
-            wc_get_template_part( 'content', 'single-product' );
+            <?php woocommerce_content(); ?>
 
-        endwhile;
-        ?>
+        </div>
 
     </div>
 

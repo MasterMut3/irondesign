@@ -1,70 +1,25 @@
 <?php
 /**
- * Single Product Short Description
+ * Product Short Description
  *
  * @package IronDesign
  */
 
 defined( 'ABSPATH' ) || exit;
 
-global $post;
+global $product;
 
-$short_description = apply_filters(
-	'woocommerce_short_description',
-	$post->post_excerpt
-);
+$short_description = apply_filters( 'woocommerce_short_description', $product->get_short_description() );
 
 if ( ! $short_description ) {
-	return;
+    return;
 }
 ?>
 
 <div class="irondesign-short-description">
 
-	<div class="product-short-description">
-
-		<?php echo wp_kses_post( $short_description ); ?>
-
-	</div>
-
-	<div class="product-trust-badges">
-
-		<div class="trust-badge">
-
-			<span class="trust-icon">🚚</span>
-
-			<span>
-
-				<?php esc_html_e( 'Fast Shipping', 'irondesign' ); ?>
-
-			</span>
-
-		</div>
-
-		<div class="trust-badge">
-
-			<span class="trust-icon">🔒</span>
-
-			<span>
-
-				<?php esc_html_e( 'Secure Checkout', 'irondesign' ); ?>
-
-			</span>
-
-		</div>
-
-		<div class="trust-badge">
-
-			<span class="trust-icon">↩️</span>
-
-			<span>
-
-				<?php esc_html_e( 'Easy Returns', 'irondesign' ); ?>
-
-			</span>
-
-		</div>
-
-	</div>
+    <div class="product-short-description">
+        <?php echo wp_kses_post( $short_description ); ?>
+    </div>
 
 </div>

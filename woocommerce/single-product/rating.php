@@ -9,53 +9,20 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-if ( ! wc_review_ratings_enabled() ) {
-	return;
-}
-
-$rating_count = $product->get_rating_count();
-$review_count = $product->get_review_count();
-$average      = $product->get_average_rating();
-
-if ( $rating_count <= 0 ) {
-	return;
+if ( ! $product->get_average_rating() ) {
+    return;
 }
 ?>
 
 <div class="irondesign-product-rating">
 
-	<div class="rating-stars">
+    <div class="rating-stars">
+        <?php echo wc_get_rating_html( $product->get_average_rating() ); ?>
+    </div>
 
-		<?php echo wc_get_rating_html( $average, $rating_count ); ?>
-
-	</div>
-
-	<div class="rating-summary">
-
-		<strong>
-
-			<?php echo esc_html( number_format_i18n( $average, 1 ) ); ?>
-
-		</strong>
-
-		<span>
-
-			<?php
-			printf(
-				esc_html(
-					_n(
-						'(%s review)',
-						'(%s reviews)',
-						$review_count,
-						'irondesign'
-					)
-				),
-				number_format_i18n( $review_count )
-			);
-			?>
-
-		</span>
-
-	</div>
+    <div class="rating-summary">
+        <strong><?php echo esc_html( $product->get_average_rating() ); ?></strong>
+        <span>(<?php echo esc_html( $product->get_rating_count() ); ?> <?php esc_html_e( 'نظر', 'irondesign' ); ?>)</span>
+    </div>
 
 </div>

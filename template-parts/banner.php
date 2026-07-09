@@ -1,86 +1,77 @@
 <?php
 /**
- * Promotional Banner
+ * Banner Section
  *
  * @package IronDesign
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$shop_url = class_exists( 'WooCommerce' )
-	? wc_get_page_permalink( 'shop' )
-	: home_url( '/' );
-
-$banner_image = get_theme_file_uri(
-	'assets/images/banner.jpg'
-);
-
 ?>
 
 <section class="banner-section">
 
-	<div class="container">
+    <div class="container">
 
-		<div class="banner glass-card">
+        <div class="banner glass-card">
 
-			<div class="banner-media">
+            <div class="banner-media">
 
-				<img
-					src="<?php echo esc_url( $banner_image ); ?>"
-					alt="<?php esc_attr_e( 'IronDesign Collection', 'irondesign' ); ?>"
-					loading="lazy">
+                <img
+                    src="<?php echo esc_url( IRONDESIGN_URI . '/assets/images/banner.jpg' ); ?>"
+                    alt="IronDesign | مجموعه صنایع دستی آهن و چوب"
+                    loading="lazy">
 
-			</div>
+            </div>
 
-			<div class="banner-overlay"></div>
+            <div class="banner-overlay"></div>
 
-			<div class="banner-content fade-up">
+            <div class="banner-content fade-up">
 
-				<span class="hero-subtitle glass">
+                <span class="hero-subtitle glass">
 
-					Limited Collection
+                    کلکسیون ویژه
 
-				</span>
+                </span>
 
-				<h2>
+                <h2>
 
-					Minimal Design.
-					<br>
-					Premium Quality.
+                    استحکام آهن
+                    <br>
+                    گرمای چوب
 
-				</h2>
+                </h2>
 
-				<p>
+                <p>
 
-					Discover carefully selected clothing designed
-					for comfort, durability and timeless style.
+                    محصولاتی که با عشق و مهارت دست‌ساز شده‌اند.
+                    هر قطعه، داستانی از تعهد به کیفیت و زیبایی را روایت می‌کند.
 
-				</p>
+                </p>
 
-				<div class="hero-actions">
+                <div class="hero-actions">
 
-					<a
-						href="<?php echo esc_url( $shop_url ); ?>"
-						class="btn btn-primary">
+                    <a
+                        href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
+                        class="btn btn-primary">
 
-						Shop Collection
+                        مشاهده کلکسیون
 
-					</a>
+                    </a>
 
-					<a
-						href="#featured-products"
-						class="btn btn-glass">
+                    <a
+                        href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) . '?orderby=date' ); ?>"
+                        class="btn btn-glass">
 
-						Explore Products
+                        محصولات جدید
 
-					</a>
+                    </a>
 
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
 </section>

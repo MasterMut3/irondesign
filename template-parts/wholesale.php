@@ -1,111 +1,104 @@
 <?php
 /**
- * Wholesale Section
+ * Custom Order Section
  *
  * @package IronDesign
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$wholesale_url = home_url( '/wholesale/' );
-
-$image = get_theme_file_uri(
-	'assets/images/wholesale.jpg'
-);
-
 ?>
 
 <section class="wholesale-section">
 
-	<div class="container">
+    <div class="container">
 
-		<div class="glass-card wholesale-wrapper">
+        <div class="glass-card wholesale-wrapper">
 
-			<div class="wholesale-content fade-up">
+            <div class="wholesale-content fade-up">
 
-				<span class="hero-subtitle glass">
+                <span class="hero-subtitle glass">
 
-					B2B Partnership
+                    سفارش اختصاصی
 
-				</span>
+                </span>
 
-				<h2 class="section-title">
+                <h2 class="section-title">
 
-					Become an
-					<br>
-					IronDesign Partner
+                    طرح مورد نظرتان را
+                    <br>
+                    <span style="color: var(--color-accent);">به ما بسپارید</span>
 
-				</h2>
+                </h2>
 
-				<p class="section-subtitle">
+                <p class="section-subtitle">
 
-					Access exclusive wholesale pricing, premium
-					collections, fast fulfillment and dedicated
-					support for your business.
+                    آیا ایده‌ای در ذهن دارید؟ ما آن را به واقعیت تبدیل می‌کنیم.
+                    از طراحی مبلمان سفارشی گرفته تا اکسسوری‌های منحصربه‌فرد،
+                    تیم IronDesign آماده است تا رویای شما را با آهن و چوب خلق کند.
 
-				</p>
+                </p>
 
-				<ul class="wholesale-benefits">
+                <ul class="wholesale-benefits">
 
-					<li>
+                    <li>
 
-						✓ Exclusive wholesale pricing
+                        طراحی کاملاً سفارشی بر اساس سلیقه شما
 
-					</li>
+                    </li>
 
-					<li>
+                    <li>
 
-						✓ Early access to new collections
+                        استفاده از بهترین متریال آهن و چوب
 
-					</li>
+                    </li>
 
-					<li>
+                    <li>
 
-						✓ Priority customer support
+                        اجرای دقیق با بالاترین کیفیت
 
-					</li>
+                    </li>
 
-					<li>
+                    <li>
 
-						✓ Flexible bulk ordering
+                        تحویل در سریع‌ترین زمان ممکن
 
-					</li>
+                    </li>
 
-				</ul>
+                </ul>
 
-				<div class="hero-actions">
+                <div class="hero-actions">
 
-					<a
-						href="<?php echo esc_url( $wholesale_url ); ?>"
-						class="btn btn-primary">
+                    <a
+                        href="<?php echo esc_url( home_url( '/custom-order/' ) ); ?>"
+                        class="btn btn-primary">
 
-						Apply Now
+                        ثبت سفارش
 
-					</a>
+                    </a>
 
-					<a
-						href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
-						class="btn btn-glass">
+                    <a
+                        href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"
+                        class="btn btn-glass">
 
-						View Catalog
+                        مشاهده نمونه کارها
 
-					</a>
+                    </a>
 
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-			<div class="wholesale-image fade-up">
+            <div class="wholesale-image fade-up">
 
-				<img
-					src="<?php echo esc_url( $image ); ?>"
-					alt="<?php esc_attr_e( 'Wholesale Program', 'irondesign' ); ?>"
-					loading="lazy">
+                <img
+                    src="<?php echo esc_url( IRONDESIGN_URI . '/assets/images/wholesale.jpg' ); ?>"
+                    alt="سفارش اختصاصی IronDesign | هر طرحی که بخواهید"
+                    loading="lazy">
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
 </section>

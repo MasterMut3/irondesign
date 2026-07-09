@@ -1,130 +1,118 @@
 <?php
 /**
- * Product Categories Section
+ * Categories Section
  *
  * @package IronDesign
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
-$product_categories = get_terms(
-	array(
-		'taxonomy'   => 'product_cat',
-		'hide_empty' => true,
-		'number'     => 8,
-		'parent'     => 0,
-	)
-);
-
-if ( empty( $product_categories ) || is_wp_error( $product_categories ) ) {
-	return;
-}
+defined( 'ABSPATH' ) || exit;
 ?>
 
 <section class="product-categories">
 
-	<div class="container">
+    <div class="container">
 
-		<div class="section-header fade-up">
+        <div class="section-header fade-up">
 
-			<div>
+            <div>
 
-				<span class="hero-subtitle glass">
-					Categories
-				</span>
+                <span class="hero-subtitle glass">
 
-				<h2 class="section-title">
-					Shop by Category
-				</h2>
+                    دسته‌بندی محصولات
 
-				<p class="section-subtitle">
-					Browse our collections and discover products that match your style.
-				</p>
+                </span>
 
-			</div>
+                <h2 class="section-title">
 
-		</div>
+                    بر اساس سلیقه‌تان انتخاب کنید
 
-		<div class="categories-grid">
+                </h2>
 
-			<?php foreach ( $product_categories as $category ) : ?>
+                <p class="section-subtitle">
 
-				<?php
+                    از میان مجموعه‌های متنوع ما، محصولی را بیابید که با سبک زندگی شما هماهنگ باشد.
+                    هر قطعه، تلفیقی از هنر آهن‌گری و ظرافت چوب است.
 
-				$thumbnail_id = get_term_meta(
-					$category->term_id,
-					'thumbnail_id',
-					true
-				);
+                </p>
 
-				$image = wp_get_attachment_image_url(
-					$thumbnail_id,
-					'large'
-				);
+            </div>
 
-				if ( ! $image ) {
-					$image = wc_placeholder_img_src();
-				}
+        </div>
 
-				?>
+        <div class="categories-grid">
 
-				<a
-					class="category-card glass-card fade-up"
-					href="<?php echo esc_url( get_term_link( $category ) ); ?>">
+            <?php
 
-					<div class="category-image">
+            $categories = irondesign_get_home_categories( 4 );
 
-						<img
-							src="<?php echo esc_url( $image ); ?>"
-							alt="<?php echo esc_attr( $category->name ); ?>"
-							loading="lazy">
+            if ( ! empty( $categories ) ) :
 
-					</div>
+                foreach ( $categories as $category ) :
 
-					<div class="category-overlay"></div>
+                    $thumbnail_id = get_term_meta(
+                        $category->term_id,
+                        'thumbnail_id',
+                        true
+                    );
 
-					<div class="category-content">
+                    $image = wp_get_attachment_url( $thumbnail_id );
 
-						<span class="category-tag">
+                    if ( ! $image ) {
+                        $image = wc_placeholder_img_src();
+                    }
 
-							<?php
-							echo esc_html(
-								sprintf(
-									_n(
-										'%d Product',
-										'%d Products',
-										$category->count,
-										'irondesign'
-									),
-									$category->count
-								)
-							);
-							?>
+                    ?>
 
-						</span>
+                    <a
+                        class="category-card glass-card fade-up"
+                        href="<?php echo esc_url( get_term_link( $category ) ); ?>">
 
-						<h3 class="category-title">
+                        <div class="category-image">
 
-							<?php echo esc_html( $category->name ); ?>
+                            <img
+                                src="<?php echo esc_url( $image ); ?>"
+                                alt="<?php echo esc_attr( $category->name ); ?>"
+                                loading="lazy">
 
-						</h3>
+                        </div>
 
-						<p>
+                        <div class="category-overlay"></div>
 
-							Explore Collection →
+                        <div class="category-content">
 
-						</p>
+                            <span class="category-tag">
 
-					</div>
+                                <?php echo esc_html( $category->count ); ?>
+                                محصول
 
-				</a>
+                            </span>
 
-			<?php endforeach; ?>
+                            <h3 class="category-title">
 
-		</div>
+                                <?php echo esc_html( $category->name ); ?>
 
-	</div>
+                            </h3>
+
+                            <p>
+
+                                مشاهده مجموعه →
+
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <?php
+
+                endforeach;
+
+            endif;
+
+            ?>
+
+        </div>
+
+    </div>
 
 </section>

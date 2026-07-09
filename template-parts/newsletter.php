@@ -1,6 +1,6 @@
 <?php
 /**
- * Newsletter Section
+ * Free Consultation Section
  *
  * @package IronDesign
  */
@@ -18,20 +18,23 @@ defined( 'ABSPATH' ) || exit;
 
                 <span class="hero-subtitle glass">
 
-                    Stay Connected
+                    دریافت مشاوره رایگان
 
                 </span>
 
                 <h2 class="section-title">
 
-                    Join the IronDesign Community
+                    با ما در تماس باشید
+                    <br>
+                    <span style="color: var(--color-accent);">رایگان مشاوره بگیرید</span>
 
                 </h2>
 
                 <p class="section-subtitle">
 
-                    Subscribe to receive exclusive offers, early access to new
-                    collections, product launches, and style inspiration.
+                    برای طراحی و ساخت محصولات سفارشی،
+                    تیم IronDesign آماده ارائه مشاوره رایگان به شماست.
+                    کافیست شماره تماس خود را وارد کنید تا در اسرع وقت با شما تماس بگیریم.
 
                 </p>
 
@@ -40,32 +43,42 @@ defined( 'ABSPATH' ) || exit;
             <div class="newsletter-form">
 
                 <form
-                    action="#"
+                    action="<?php echo esc_url( home_url( '/' ) ); ?>#consultation"
                     method="post"
-                    class="irondesign-newsletter-form">
+                    class="irondesign-newsletter-form consultation-form">
 
-                    <label class="screen-reader-text" for="newsletter-email">
+                    <label
+                        class="screen-reader-text"
+                        for="consultation-phone">
 
-                        <?php esc_html_e( 'Email Address', 'irondesign' ); ?>
+                        شماره تماس
 
                     </label>
 
                     <input
-                        id="newsletter-email"
-                        type="email"
-                        name="email"
-                        placeholder="<?php esc_attr_e( 'Enter your email address', 'irondesign' ); ?>"
-                        required>
+                        id="consultation-phone"
+                        type="tel"
+                        name="phone"
+                        placeholder="شماره تماس خود را وارد کنید"
+                        required
+                        pattern="[0-9]{10,11}"
+                        title="لطفاً شماره تماس معتبر وارد کنید">
 
                     <button
                         class="btn btn-primary"
                         type="submit">
 
-                        <?php esc_html_e( 'Subscribe', 'irondesign' ); ?>
+                        درخواست مشاوره
 
                     </button>
 
                 </form>
+
+                <p style="font-size: 12px; color: #888; margin-top: 12px; text-align: center;">
+
+                    ☎️ یا با شماره <strong style="color: #fff;">۰۲۱-۱۲۳۴-۵۶۷۸</strong> تماس بگیرید
+
+                </p>
 
             </div>
 
