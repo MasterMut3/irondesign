@@ -14,8 +14,8 @@ get_header();
 
     <div class="container">
 
-        <!-- Shop Header -->
-        <div class="shop-header glass-card">
+        <!-- Shop Header - Compact -->
+        <div class="shop-header-compact glass-card">
 
             <div class="shop-header-content">
 
@@ -27,16 +27,12 @@ get_header();
                     <?php woocommerce_page_title(); ?>
                 </h1>
 
-                <p class="shop-description">
-                    <?php esc_html_e( 'ترکیبی از استحکام آهن و گرمای چوب در هر محصول', 'irondesign' ); ?>
-                </p>
-
             </div>
 
         </div>
 
-        <!-- Shop Filters -->
-        <div class="shop-filters glass-card">
+        <!-- Shop Filters - Compact -->
+        <div class="shop-filters-compact glass-card">
 
             <!-- Category Filter -->
             <div class="filter-categories">
