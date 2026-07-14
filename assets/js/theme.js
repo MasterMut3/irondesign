@@ -887,3 +887,284 @@ document.addEventListener(
     }
 
 );
+/**
+ * IronDesign Theme - Main JavaScript
+ * Clean version without errors
+ */
+
+(function($) {
+    'use strict';
+
+    // ============================================
+    // 1. SINGLE PRODUCT GALLERY
+    // ============================================
+    
+    function initProductGallery() {
+        // Only run on single product pages
+        if (!$('body.single-product').length) {
+            return;
+        }
+
+        var $mainImage = $('#main-product-image');
+        var $thumbnails = $('.irondesign-gallery-thumbnails');
+        var $thumbs = $thumbnails.find('.gallery-thumb');
+        var thumbCount = $thumbs.length;
+        var currentIndex = 0;
+
+        // No thumbnails? Exit
+        if (thumbCount === 0) return;
+
+        // ===== THUMBNAIL CLICK =====
+        $thumbs.on('click', function() {
+            var $this = $(this);
+            var imageUrl = $this.data('image');
+            var index = parseInt($this.data('index'));
+            
+            if (imageUrl && $mainImage.length) {
+                // Change main image
+                $mainImage.attr('src', imageUrl);
+                
+                // Update active state
+                $thumbs.removeClass('active');
+                $this.addClass('active');
+                
+                currentIndex = index;
+                
+                // Update slider position
+                updateSliderPosition();
+            }
+        });
+
+        // ===== SLIDER NAVIGATION =====
+        function updateSliderPosition() {
+            var $firstThumb = $thumbs.first();
+            if (!$firstThumb.length) return;
+            
+            var thumbWidth = $firstThumb.outerWidth(true) || 80;
+            var containerWidth = $thumbnails.width() || 300;
+            var maxScroll = Math.max(0, (thumbWidth * thumbCount) - containerWidth);
+            
+            var scrollAmount = currentIndex * thumbWidth;
+            var centerOffset = (containerWidth / 2) - (thumbWidth / 2);
+            var finalScroll = Math.min(Math.max(0, scrollAmount - centerOffset + thumbWidth / 2), maxScroll);
+            
+            $thumbnails.animate({
+                scrollLeft: finalScroll
+            }, 300);
+        }
+
+        // ===== ARROW BUTTONS =====
+        $('.slider-arrow.prev').on('click', function() {
+            var newIndex = Math.max(0, currentIndex - 1);
+            $thumbs.eq(newIndex).trigger('click');
+        });
+
+        $('.slider-arrow.next').on('click', function() {
+            var newIndex = Math.min(thumbCount - 1, currentIndex + 1);
+            $thumbs.eq(newIndex).trigger('click');
+        });
+
+        // ===== KEYBOARD NAVIGATION =====
+        $(document).on('keydown', function(e) {
+            if (!$(e.target).closest('.irondesign-gallery').length) return;
+            
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                $('.slider-arrow.next').trigger('click');
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                $('.slider-arrow.prev').trigger('click');
+            }
+        });
+
+        // ===== TOUCH SWIPE SUPPORT =====
+        var touchStartX = 0;
+        var touchEndX = 0;
+        
+        $('.irondesign-gallery').on('touchstart', function(e) {
+            touchStartX = e.originalEvent.changedTouches[0].screenX;
+        });
+        
+        $('.irondesign-gallery').on('touchend', function(e) {
+            touchEndX = e.originalEvent.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+            var threshold = 50;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    $('.slider-arrow.next').trigger('click');
+                } else {
+                    $('.slider-arrow.prev').trigger('click');
+                }
+            }
+        });
+
+        // ===== WINDOW RESIZE =====
+        var resizeTimer;
+        $(window).on('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                updateSliderPosition();
+            }, 250);
+        });
+
+        // ===== INITIAL SETUP =====
+        setTimeout(updateSliderPosition, 300);
+    }
+
+    // ============================================
+    // 2. MOBILE MENU TOGGLE
+    // ============================================
+    
+    function initMobileMenu() {
+        var $toggle = $('.mobile-toggle');
+        var $menu = $('#primary-navigation');
+        
+        if (!$toggle.length || !$menu.length) return;
+        
+        $toggle.on('click', function(e) {
+            e.preventDefault();
+            $menu.toggleClass('active');
+            $toggle.toggleClass('active');
+        });
+    }
+
+    // ============================================
+    // 3. ADD TRUST BADGES (If not already in HTML)
+    // ============================================
+    
+    function initTrustBadges() {
+        // Only run on single product pages
+        if (!$('body.single-product').length) return;
+        
+        // Check if trust badges already exist
+        if ($('.product-trust-badges').length) return;
+        
+        // Check if we're in the right place
+        var $summary = $('.single-product-summary');
+        if (!$summary.length) return;
+        
+        // Trust badges HTML
+        var trustBadges = `
+            <div class="product-trust-badges">
+                <div class="trust-badge">
+                    <span class="trust-icon">🔨</span>
+                    <span>صنایع دستی</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-icon">🌳</span>
+                    <span>چوب طبیعی</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-icon">⚙️</span>
+                    <span>استحکام آهن</span>
+                </div>
+            </div>
+        `;
+        
+        $summary.append(trustBadges);
+    }
+
+    // ============================================
+    // 4. QUANTITY BUTTONS (For add to cart)
+    // ============================================
+    
+    function initQuantityButtons() {
+        $('.quantity').each(function() {
+            var $wrapper = $(this);
+            var $input = $wrapper.find('.qty');
+            
+            // Skip if already wrapped
+            if ($wrapper.closest('.quantity-wrapper').length) return;
+            
+            var min = parseInt($input.attr('min')) || 1;
+            var max = parseInt($input.attr('max')) || 9999;
+            
+            // Wrap in container
+            $wrapper.wrap('<div class="quantity-wrapper"></div>');
+            
+            // Add buttons
+            $wrapper.before('<button type="button" class="qty-btn minus">−</button>');
+            $wrapper.after('<button type="button" class="qty-btn plus">+</button>');
+            
+            // Minus button
+            $wrapper.parent().find('.minus').on('click', function(e) {
+                e.preventDefault();
+                var val = parseInt($input.val()) || min;
+                if (val > min) {
+                    $input.val(val - 1).trigger('change');
+                }
+            });
+            
+            // Plus button
+            $wrapper.parent().find('.plus').on('click', function(e) {
+                e.preventDefault();
+                var val = parseInt($input.val()) || min;
+                if (val < max) {
+                    $input.val(val + 1).trigger('change');
+                }
+            });
+            
+            // Validate on change
+            $input.on('change', function() {
+                var val = parseInt($(this).val()) || min;
+                if (val < min) $(this).val(min);
+                if (val > max) $(this).val(max);
+            });
+        });
+    }
+
+    // ============================================
+    // 5. SOCIAL SHARE LINKS
+    // ============================================
+    
+    function initSocialShare() {
+        $('.share-link').on('click', function(e) {
+            e.preventDefault();
+            
+            var social = $(this).data('social');
+            var url = window.location.href;
+            var title = document.title;
+            var shareUrl = '';
+            
+            switch(social) {
+                case 'whatsapp':
+                    shareUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(title + ' - ' + url);
+                    break;
+                case 'telegram':
+                    shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
+                    break;
+                case 'twitter':
+                    shareUrl = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
+                    break;
+                case 'instagram':
+                    alert('لطفاً لینک را کپی کرده و در اینستاگرام به اشتراک بگذارید:\n' + url);
+                    return;
+                default:
+                    return;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        });
+    }
+
+    // ============================================
+    // 6. INITIALIZE EVERYTHING
+    // ============================================
+    
+    $(document).ready(function() {
+        initProductGallery();
+        initMobileMenu();
+        initTrustBadges();
+        initQuantityButtons();
+        initSocialShare();
+    });
+
+    // Re-run gallery after any AJAX updates
+    $(document).on('woocommerce_variation_has_changed', function() {
+        setTimeout(initProductGallery, 500);
+    });
+
+})(jQuery);
