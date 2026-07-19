@@ -1030,42 +1030,6 @@ document.addEventListener(
     }
 
     // ============================================
-    // 3. ADD TRUST BADGES (If not already in HTML)
-    // ============================================
-    
-    function initTrustBadges() {
-        // Only run on single product pages
-        if (!$('body.single-product').length) return;
-        
-        // Check if trust badges already exist
-        if ($('.product-trust-badges').length) return;
-        
-        // Check if we're in the right place
-        var $summary = $('.single-product-summary');
-        if (!$summary.length) return;
-        
-        // Trust badges HTML
-        var trustBadges = `
-            <div class="product-trust-badges">
-                <div class="trust-badge">
-                    <span class="trust-icon">🔨</span>
-                    <span>صنایع دستی</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="trust-icon">🌳</span>
-                    <span>چوب طبیعی</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="trust-icon">⚙️</span>
-                    <span>استحکام آهن</span>
-                </div>
-            </div>
-        `;
-        
-        $summary.append(trustBadges);
-    }
-
-    // ============================================
     // 4. QUANTITY BUTTONS (For add to cart)
     // ============================================
     
@@ -1168,3 +1132,102 @@ document.addEventListener(
     });
 
 })(jQuery);
+
+
+
+
+/**
+ * ============================================
+ * PRODUCT TABS
+ * ============================================
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.querySelectorAll('.tab-link');
+    
+    if (!tabs.length) return;
+    
+    // Set first tab as active
+    var firstTab = document.querySelector('.tab-item:first-child');
+    var firstPanel = document.querySelector('.tab-panel:first-child');
+    if (firstTab) firstTab.classList.add('active');
+    if (firstPanel) firstPanel.classList.add('active');
+    
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the tab ID
+            var tabId = this.getAttribute('href');
+            var parent = this.closest('.irondesign-product-tabs');
+            
+            // Remove active from all tabs in this container
+            parent.querySelectorAll('.tab-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+            
+            // Remove active from all panels in this container
+            parent.querySelectorAll('.tab-panel').forEach(function(panel) {
+                panel.classList.remove('active');
+            });
+            
+            // Activate this tab
+            this.parentElement.classList.add('active');
+            
+            // Activate corresponding panel
+            var panel = parent.querySelector(tabId);
+            if (panel) {
+                panel.classList.add('active');
+            }
+        });
+    });
+});
+
+
+
+
+
+/**
+ * ============================================
+ * PRODUCT TABS
+ * ============================================
+ */
+
+function initProductTabs() {
+    var tabs = document.querySelectorAll('.irondesign-product-tabs .tab-link');
+    
+    if (!tabs.length) return;
+    
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            var parent = this.closest('.irondesign-product-tabs');
+            var tabId = this.getAttribute('href');
+            
+            // Remove active from all tabs in this container
+            parent.querySelectorAll('.tab-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+            
+            // Remove active from all panels in this container
+            parent.querySelectorAll('.tab-panel').forEach(function(panel) {
+                panel.classList.remove('active');
+            });
+            
+            // Activate this tab
+            this.parentElement.classList.add('active');
+            
+            // Activate corresponding panel
+            var panel = parent.querySelector(tabId);
+            if (panel) {
+                panel.classList.add('active');
+            }
+        });
+    });
+}
+
+// Initialize tabs on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initProductTabs();
+});

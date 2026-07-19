@@ -257,3 +257,32 @@ function irondesign_related_products() {
 	);
 
 }
+/**
+ * ============================================
+ * ADD TO CART OVERRIDE
+ * ============================================
+ */
+
+// Remove default add to cart
+remove_action(
+    'woocommerce_single_product_summary',
+    'woocommerce_template_single_add_to_cart',
+    30
+);
+
+// Add custom add to cart
+add_action(
+    'woocommerce_single_product_summary',
+    'irondesign_template_single_add_to_cart',
+    30
+);
+
+function irondesign_template_single_add_to_cart() {
+    global $product;
+    
+    if ($product->is_type('simple')) {
+        wc_get_template('single-product/simple.php');
+    } elseif ($product->is_type('variable')) {
+        wc_get_template('single-product/variable.php');
+    }
+}
