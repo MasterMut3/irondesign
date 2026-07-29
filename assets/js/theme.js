@@ -1016,18 +1016,48 @@ document.addEventListener(
     // 2. MOBILE MENU TOGGLE
     // ============================================
     
-    function initMobileMenu() {
-        var $toggle = $('.mobile-toggle');
-        var $menu = $('#primary-navigation');
         
-        if (!$toggle.length || !$menu.length) return;
-        
-        $toggle.on('click', function(e) {
-            e.preventDefault();
-            $menu.toggleClass('active');
-            $toggle.toggleClass('active');
-        });
+function initMobileMenu() {
+    var $toggle = $('.mobile-toggle');
+    var $menu = $('#primary-navigation');
+    
+    // If elements don't exist, exit
+    if (!$toggle.length || !$menu.length) {
+        return;
     }
+    
+    // Toggle menu on button click
+    $toggle.on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        $toggle.toggleClass('active');
+        $menu.toggleClass('active');
+        $('body').toggleClass('menu-open');
+    });
+    
+    // Close menu when clicking outside
+    $(document).on('click', function(e) {
+        if (!$toggle.is(e.target) && 
+            $toggle.has(e.target).length === 0 && 
+            !$menu.is(e.target) && 
+            $menu.has(e.target).length === 0) {
+            
+            $toggle.removeClass('active');
+            $menu.removeClass('active');
+            $('body').removeClass('menu-open');
+        }
+    });
+    
+    // Close menu on Escape key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $menu.hasClass('active')) {
+            $toggle.removeClass('active');
+            $menu.removeClass('active');
+            $('body').removeClass('menu-open');
+        }
+    });
+}
 
     // ============================================
     // 4. QUANTITY BUTTONS (For add to cart)
@@ -1121,7 +1151,6 @@ document.addEventListener(
     $(document).ready(function() {
         initProductGallery();
         initMobileMenu();
-        initTrustBadges();
         initQuantityButtons();
         initSocialShare();
     });
@@ -1231,3 +1260,29 @@ function initProductTabs() {
 document.addEventListener('DOMContentLoaded', function() {
     initProductTabs();
 });
+
+// Simple Mobile Menu Toggle (Fallback)
+(function($) {
+    'use strict';
+
+    $(document).ready(function() {
+        // Mobile toggle
+        $('.mobile-toggle').on('click', function(e) {
+            e.preventDefault();
+            $(this).toggleClass('active');
+            $('#primary-navigation').toggleClass('active');
+            $('body').toggleClass('menu-open');
+        });
+
+        // Close menu when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.mobile-toggle').length && 
+                !$(e.target).closest('#primary-navigation').length) {
+                $('.mobile-toggle').removeClass('active');
+                $('#primary-navigation').removeClass('active');
+                $('body').removeClass('menu-open');
+            }
+        });
+    });
+
+})(jQuery);

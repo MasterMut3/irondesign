@@ -59,3 +59,13 @@ add_filter('template_include', function($template) {
     }
     return $template;
 }, 999);
+/**
+ * Add CSP header with unsafe-eval
+ */
+function irondesign_add_csp_header() {
+    if (!is_admin()) {
+        header("Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval';");
+    }
+}
+add_action('send_headers', 'irondesign_add_csp_header');
+
