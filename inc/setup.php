@@ -98,20 +98,5 @@ add_action( 'after_setup_theme', 'irondesign_setup' );
  * 
  * Only runs if ACF is active.
  */
-function irondesign_acf_options() {
-	
-	// Check if ACF function exists
-	if ( ! function_exists( 'acf_add_options_page' ) ) {
-		return;
-	}
-	
-	acf_add_options_page( array(
-		'page_title' => esc_html__( 'Theme Settings', 'irondesign' ),
-		'menu_title' => esc_html__( 'IronDesign Settings', 'irondesign' ),
-		'menu_slug'  => 'irondesign-settings',
-		'capability' => 'edit_posts',
-		'redirect'   => false,
-	) );
-}
 
 add_action( 'acf/init', 'irondesign_acf_options' );
