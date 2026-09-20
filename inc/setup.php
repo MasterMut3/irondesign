@@ -99,4 +99,3 @@ add_action( 'after_setup_theme', 'irondesign_setup' );
  * Only runs if ACF is active.
  */
 
-add_action( 'acf/init', 'irondesign_acf_options' );
