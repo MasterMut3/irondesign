@@ -27,9 +27,9 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	
 	// If redirect is set, do the redirect
 	if ( isset( $result['redirect'] ) && $result['redirect'] ) {
-		wp_safe_redirect( esc_url( $result['redirect'] ) );
-		exit;
-	}
+    wp_safe_redirect( $result['redirect'] );
+    exit;
+}
 	
 	// Store errors if any
 	if ( isset( $result['errors'] ) && ! empty( $result['errors'] ) ) {
